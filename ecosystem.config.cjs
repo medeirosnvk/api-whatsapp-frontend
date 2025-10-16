@@ -2,9 +2,9 @@ module.exports = {
   apps: [
     {
       name: "api-whatsapp-frontend",
-      script: "node",
-      args: "./build/server/index.js", // Arquivo gerado após o build
-      cwd: "/home/deploy/api-whatsapp-frontend", // opcional, mas recomendado
+      script: "npm",
+      args: "run start", // roda 'npm run start'
+      cwd: "/home/deploy/api-whatsapp-frontend", // diretório do projeto
       env: {
         NODE_ENV: "production",
         PORT: 5175,
