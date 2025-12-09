@@ -32,8 +32,8 @@ export default function WhatsAppConnections() {
   );
   const statusCheckIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [hostApiList, setHostApiList] = useState<string[]>([
-    "http://191.101.70.186:3020",
-    "http://191.252.214.9:3020",
+    "https://whatsapp.cobrance.online:3060",
+    "http://191.252.214.9:3060",
     "http://10.0.0.102:3020",
   ]);
 
