@@ -31,30 +31,24 @@ export default function WhatsAppConnections() {
     null
   );
   const statusCheckIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const [hostApiList, setHostApiList] = useState<string[]>([
-    "https://whatsapp.cobrance.online:3060",
-    "http://191.252.214.9:3060",
-    "http://10.0.0.102:3020",
-  ]);
+  const [hostApiList, setHostApiList] = useState<string[]>([]);
 
-  // http://191.101.70.186:3080
+  useEffect(() => {
+    const fetchHostsConnections = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.cobrance.online:3030/frontend/listHostsConnections`
+        );
 
-  // useEffect(() => {
-  //   const fetchHostsConnections = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://api.cobrance.online:3030/frontend/listHostsConnections`
-  //       );
+        const listHosts = response.data;
+        setHostApiList(listHosts);
+      } catch (error) {
+        console.error("Erro ao buscar lista de hosts:", error);
+      }
+    };
 
-  //       const listHosts = response.data;
-  //       setHostApiList(listHosts);
-  //     } catch (error) {
-  //       console.error("Erro ao buscar lista de hosts:", error);
-  //     }
-  //   };
-
-  //   fetchHostsConnections();
-  // }, []);
+    fetchHostsConnections();
+  }, []);
 
   const handleCreateConnection = async () => {
     if (!connectionName.trim()) {
