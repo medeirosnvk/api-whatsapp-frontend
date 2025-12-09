@@ -41,6 +41,7 @@ export default function WhatsAppConnections() {
         );
 
         const listHosts = response.data;
+        console.log("listHosts -", listHosts);
         setHostApiList(listHosts);
       } catch (error) {
         console.error("Erro ao buscar lista de hosts:", error);
